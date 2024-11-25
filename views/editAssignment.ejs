@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= assignment._id ? 'Edit' : 'Add' %> Assignment</title>
+    <link rel="stylesheet" type="text/css" href="/styles/style.css">
+</head>
+<body>
+    <header>
+        <h1><%= assignment._id ? 'Edit' : 'Add' %> Assignment</h1>
+    </header>
+    <form action="<%= assignment._id ? '/assignments/' + assignment._id : '/assignments' %>?_method=<%= assignment._id ? 'PUT' : 'POST' %>" method="POST">
+        <label for="title">Title:</label>
+        <input type="text" name="title" id="title" value="<%= assignment.title %>" required><br>
+        
+        <label for="description">Description:</label>
+        <textarea name="description" id="description" required><%= assignment.description %></textarea><br>
+        
+        <label for="dueDate">Due Date:</label>
+        <input type="date" name="dueDate" id="dueDate" value="<%= assignment.dueDate ? assignment.dueDate.toISOString().split('T')[0] : '' %>" required><br>
+        
+        <button type="submit" class="create-assignment-btn">Create Assignment</button>
+    </form>
+    <footer>
+        <p>© 2024 By Hamza Choudhry</p>
+    </footer>
+</body>
+</html>

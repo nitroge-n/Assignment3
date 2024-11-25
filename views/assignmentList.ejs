@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assignments</title>
+    <link rel="stylesheet" type="text/css" href="/styles/style.css">
+</head>
+<body>
+    <div class="add-assignment-button">
+        <a href="/assignments/new">
+            <button>Add New Assignment</button>
+        </a>
+    </div>
+
+    <header>
+        <h1>Assignments</h1>
+    </header>
+
+    <div class="assignments-container">
+        <% assignments.forEach(assignment => { %>
+            <div class="assignment-card">
+                <h3><%= assignment.title %></h3>
+                <p><%= assignment.description %></p>
+                <p>Due Date: <%= assignment.dueDate.toDateString() %></p>
+                <a href="/assignments/<%= assignment._id %>/edit">
+                    <button class="edit-assignment-btn">Edit</button>
+                </a>
+                <form action="/assignments/<%= assignment._id %>?_method=DELETE" method="POST" style="display:inline;">
+                    <button type="submit" class="delete-assignment-btn">Delete</button>
+                </form>
+            </div>
+        <% }); %>
+    </div>
+
+    <footer>
+        <p>© 2024 By Hamza Choudhry</p>
+    </footer>
+</body>
+</html>
